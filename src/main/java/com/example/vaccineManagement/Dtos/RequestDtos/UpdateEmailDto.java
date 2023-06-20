@@ -1,14 +1,8 @@
 package com.example.vaccineManagement.Dtos.RequestDtos;
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
-@Getter
-@Setter
-@AllArgsConstructor
-@NoArgsConstructor
+@Data
 public class UpdateEmailDto {
     private int userId;
     private String newEmailId;

@@ -7,6 +7,9 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @Entity
 @Table(name = "doctors")
 @Getter
@@ -31,5 +34,8 @@ public class Doctor {
     @ManyToOne
     @JoinColumn
     private VaccinationCenter vaccinationCenter;
+
+    @OneToMany(mappedBy = "doctor", cascade = CascadeType.ALL)
+    private List<Appointment> appointmentList = new ArrayList<>();
 
 }
