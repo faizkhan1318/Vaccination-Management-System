@@ -20,6 +20,7 @@ public class DoctorService {
     @Autowired
     private DoctorRepository doctorRepository;
 
+    @Autowired
     private VaccinationCenterRepository vaccinationCenterRepository;
 
     public String add(Doctor doctor) throws EmailIdEmptyException, DoctorAlreadyExistsException {

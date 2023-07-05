@@ -6,10 +6,9 @@ import com.example.vaccineManagement.Services.VaccinationService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 @RequestMapping("/VaccinationCenter")
@@ -25,6 +24,16 @@ public class VaccinationController {
             return new ResponseEntity<>(result, HttpStatus.OK);
         }catch (VaccinationAddressNotFound e){
             return new ResponseEntity<>(e.getMessage(), HttpStatus.NOT_FOUND);
+        }
+    }
+
+    @GetMapping("/allNameAndAddress")
+    public ResponseEntity<List<String>> getAllVaccinationCentres() {
+        try {
+            List<String> result = vaccinationService.getAllVaccinationCentres();
+            return new ResponseEntity<>(result, HttpStatus.CREATED);
+        } catch (Exception re) {
+            return new ResponseEntity<>(null, HttpStatus.NOT_FOUND);
         }
     }
 }

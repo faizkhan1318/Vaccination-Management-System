@@ -4,6 +4,8 @@ import com.example.vaccineManagement.Dtos.RequestDtos.UpdateEmailDto;
 import com.example.vaccineManagement.Models.User;
 import com.example.vaccineManagement.Services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Date;
@@ -28,7 +30,13 @@ public class UserController {
         return userService.updateEmail(updateEmailDto);
     }
     @GetMapping("/getByEmail/{emailId}")
-    public User getUserByEmail(@PathVariable("emailId") String email){
-        return userService.getUserByEmail(email);
+    public ResponseEntity<String> getUserByEmail(@PathVariable("emailId") String email){
+        try{
+            User user =userService.getUserByEmail(email);
+            return new ResponseEntity<>(user.getName(), HttpStatus.FOUND);
+        }catch (Exception e){
+            return new ResponseEntity<>(e.getMessage(), HttpStatus.NOT_FOUND);
+        }
+
     }
 }

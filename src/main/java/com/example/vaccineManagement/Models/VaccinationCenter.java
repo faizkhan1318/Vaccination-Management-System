@@ -22,7 +22,7 @@ public class VaccinationCenter {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
-    private String centreName;
+    private String centerName;
 
     private LocalTime openingTime;
 

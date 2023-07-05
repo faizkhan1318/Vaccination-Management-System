@@ -38,7 +38,11 @@ public class DoseService {
 
         //child will automatically saved becuase of cascading effect
         userRepository.save(user);
-        return "set user successfully";
+        return "Dose has been Given Successfully to: "+user.getName();
 
+    }
+
+    public Integer countAllDoseGiven() {
+        return doseRepository.findAll().size();
     }
 }
